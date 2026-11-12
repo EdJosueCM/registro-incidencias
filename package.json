@@ -1,6 +1,6 @@
 {
   "name": "registro-incidencias",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Aplicación web sencilla para registrar y consultar incidencias reportadas por usuarios.",
   "type": "module",
   "private": true,
