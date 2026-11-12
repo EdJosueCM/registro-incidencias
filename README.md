@@ -40,3 +40,12 @@ npm test
 - `main` es la rama estable y la que se despliega.
 - Cada cambio se hace en su propia rama (`feature/...`, `fix/...`, `ci/...`) y entra a `main` por pull request.
 - Las versiones siguen [SemVer](https://semver.org/lang/es/) (`MAJOR.MINOR.PATCH`) y se publican como releases de GitHub.
+
+## Integración y despliegue continuo
+
+El workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) tiene dos jobs:
+
+1. **Validar**: revisa la sintaxis de los scripts y ejecuta `npm test`. Corre en cada pull request y en cada push a `main`.
+2. **Desplegar**: solo si la validación pasa y el cambio llegó a `main`, publica la app en GitHub Pages.
+
+Aplicación publicada: **https://edjosuecm.github.io/registro-incidencias/**
