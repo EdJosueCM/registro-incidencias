@@ -3,6 +3,14 @@
 Todos los cambios relevantes del proyecto se registran aquí.
 El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y el proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.1] - 2026-11-12
+
+### Corregido
+- El filtro **Todos** dejaba la lista vacía después de haber filtrado por otro estado ([#6](https://github.com/EdJosueCM/registro-incidencias/issues/6), PR [#7](https://github.com/EdJosueCM/registro-incidencias/pull/7)).
+
+### Añadido
+- Pruebas de regresión para el filtro con valor `todos` o desconocido.
+
 ## [1.1.0] - 2026-11-12
 
 ### Añadido
@@ -20,5 +28,6 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) y e
 - Pruebas unitarias con `node --test`.
 - Workflow de GitHub Actions que valida la app y la despliega en GitHub Pages.
 
+[1.1.1]: https://github.com/EdJosueCM/registro-incidencias/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/EdJosueCM/registro-incidencias/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/EdJosueCM/registro-incidencias/releases/tag/v1.0.0
