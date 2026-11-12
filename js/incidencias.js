@@ -57,12 +57,14 @@ export function ordenarPorFecha(lista) {
   return [...lista].sort((a, b) => b.fecha.localeCompare(a.fecha));
 }
 
+export const FILTRO_TODOS = "todos";
+
 /**
  * Filtra las incidencias por estado.
- * Si no se indica estado se devuelven todas.
+ * Con `"todos"`, sin estado o con un estado desconocido se devuelven todas (#6).
  */
-export function filtrarPorEstado(lista, estado) {
-  if (!estado) return lista;
+export function filtrarPorEstado(lista, estado = FILTRO_TODOS) {
+  if (!ESTADOS.includes(estado)) return lista;
   return lista.filter((inc) => inc.estado === estado);
 }
 
