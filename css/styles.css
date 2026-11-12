@@ -116,3 +116,11 @@ button:hover { filter: brightness(1.08); }
   background: var(--fondo);
   border: 1px solid var(--borde);
 }
+
+.filtro { display: flex; align-items: center; gap: 6px; }
+.filtro select { padding: 4px 8px; }
+.avanzar {
+  margin-left: auto;
+  padding: 4px 10px;
+  font-size: .8rem;
+}

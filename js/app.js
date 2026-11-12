@@ -3,6 +3,8 @@ import {
   crearIncidencia,
   validarIncidencia,
   ordenarPorFecha,
+  filtrarPorEstado,
+  avanzarEstado,
   ETIQUETAS_ESTADO,
 } from "./incidencias.js";
 
@@ -13,8 +15,10 @@ const listaEl = document.getElementById("lista");
 const vacioEl = document.getElementById("vacio");
 const contadorEl = document.getElementById("contador");
 const erroresEl = document.getElementById("errores");
+const filtroEl = document.getElementById("filtro-estado");
 
 let incidencias = cargar();
+let filtro = null; // null = sin filtro
 
 function cargar() {
   try {
@@ -61,12 +65,25 @@ function crearItem(inc) {
     span(formatearFecha(inc.fecha)),
   );
 
+  if (inc.estado !== "cerrada") {
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "avanzar";
+    boton.textContent = inc.estado === "abierta" ? "Iniciar" : "Cerrar";
+    boton.addEventListener("click", () => {
+      incidencias = avanzarEstado(incidencias, inc.id);
+      guardar();
+      render();
+    });
+    meta.append(boton);
+  }
+
   li.append(h3, p, meta);
   return li;
 }
 
 function render() {
-  const visibles = ordenarPorFecha(incidencias);
+  const visibles = ordenarPorFecha(filtrarPorEstado(incidencias, filtro));
   listaEl.replaceChildren(...visibles.map(crearItem));
   contadorEl.textContent = visibles.length;
   vacioEl.hidden = visibles.length > 0;
@@ -88,6 +105,11 @@ form.addEventListener("submit", (evento) => {
   incidencias.push(crearIncidencia(datos, incidencias));
   guardar();
   form.reset();
+  render();
+});
+
+filtroEl.addEventListener("change", () => {
+  filtro = filtroEl.value;
   render();
 });
 
