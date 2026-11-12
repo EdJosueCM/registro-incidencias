@@ -80,3 +80,12 @@ test("avanzarEstado cambia solo la incidencia indicada", () => {
   assert.equal(nueva[1].estado, "en_progreso");
   assert.equal(muestra[0].estado, "abierta");
 });
+
+// --- v1.1.1: regresión del issue #6 ---
+test("filtrarPorEstado con 'todos' devuelve todas las incidencias (#6)", () => {
+  assert.equal(filtrarPorEstado(muestra, "todos").length, 4);
+});
+
+test("filtrarPorEstado con un estado desconocido devuelve todas (#6)", () => {
+  assert.equal(filtrarPorEstado(muestra, "otro").length, 4);
+});
