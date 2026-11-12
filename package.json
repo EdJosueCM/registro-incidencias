@@ -1,0 +1,14 @@
+{
+  "name": "registro-incidencias",
+  "version": "0.1.0",
+  "description": "Aplicación web sencilla para registrar y consultar incidencias reportadas por usuarios.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/",
+    "start": "npx --yes serve ."
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
