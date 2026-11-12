@@ -9,7 +9,7 @@
 <body>
   <header class="cabecera">
     <h1>Registro de Incidencias</h1>
-    <span class="version" id="version">v1.0.0</span>
+    <span class="version" id="version">v1.1.0</span>
   </header>
 
   <main class="contenedor">
@@ -37,8 +37,16 @@
     <section class="tarjeta">
       <div class="barra-lista">
         <h2>Incidencias <span class="contador" id="contador">0</span></h2>
+        <label class="filtro">Estado
+          <select id="filtro-estado">
+            <option value="todos">Todos</option>
+            <option value="abierta">Abierta</option>
+            <option value="en_progreso">En progreso</option>
+            <option value="cerrada">Cerrada</option>
+          </select>
+        </label>
       </div>
-      <p class="vacio" id="vacio">Aún no hay incidencias registradas.</p>
+      <p class="vacio" id="vacio">No hay incidencias para mostrar.</p>
       <ul class="lista" id="lista"></ul>
     </section>
   </main>
