@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro de Incidencias</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="cabecera">
+    <h1>Registro de Incidencias</h1>
+    <span class="version" id="version">v1.0.0</span>
+  </header>
+
+  <main class="contenedor">
+    <section class="tarjeta">
+      <h2>Nueva incidencia</h2>
+      <form id="form-incidencia" novalidate>
+        <label>Título
+          <input name="titulo" type="text" maxlength="80" placeholder="Ej.: No se puede iniciar sesión" required>
+        </label>
+        <label>Descripción
+          <textarea name="descripcion" rows="3" placeholder="Describe qué pasó y cómo reproducirlo" required></textarea>
+        </label>
+        <label>Prioridad
+          <select name="prioridad">
+            <option value="baja">Baja</option>
+            <option value="media" selected>Media</option>
+            <option value="alta">Alta</option>
+          </select>
+        </label>
+        <ul class="errores" id="errores" aria-live="polite"></ul>
+        <button type="submit">Registrar</button>
+      </form>
+    </section>
+
+    <section class="tarjeta">
+      <div class="barra-lista">
+        <h2>Incidencias <span class="contador" id="contador">0</span></h2>
+      </div>
+      <p class="vacio" id="vacio">Aún no hay incidencias registradas.</p>
+      <ul class="lista" id="lista"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
