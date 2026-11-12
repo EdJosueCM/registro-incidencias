@@ -18,7 +18,7 @@ const erroresEl = document.getElementById("errores");
 const filtroEl = document.getElementById("filtro-estado");
 
 let incidencias = cargar();
-let filtro = null; // null = sin filtro
+let filtro = "todos";
 
 function cargar() {
   try {
