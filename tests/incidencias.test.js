@@ -48,3 +48,35 @@ test("ordenarPorFecha pone primero la más reciente sin mutar la lista", () => {
   assert.deepEqual(ordenada.map((i) => i.id), [2, 1]);
   assert.equal(lista[0].id, 1);
 });
+
+// --- v1.1.0: filtro y cambio de estado ---
+import { filtrarPorEstado, siguienteEstado, avanzarEstado } from "../js/incidencias.js";
+
+const muestra = [
+  { id: 1, estado: "abierta" },
+  { id: 2, estado: "en_progreso" },
+  { id: 3, estado: "cerrada" },
+  { id: 4, estado: "abierta" },
+];
+
+test("filtrarPorEstado devuelve solo las del estado pedido", () => {
+  assert.deepEqual(filtrarPorEstado(muestra, "abierta").map((i) => i.id), [1, 4]);
+  assert.deepEqual(filtrarPorEstado(muestra, "cerrada").map((i) => i.id), [3]);
+});
+
+test("filtrarPorEstado sin estado devuelve todas", () => {
+  assert.equal(filtrarPorEstado(muestra).length, 4);
+});
+
+test("siguienteEstado avanza y se detiene en cerrada", () => {
+  assert.equal(siguienteEstado("abierta"), "en_progreso");
+  assert.equal(siguienteEstado("en_progreso"), "cerrada");
+  assert.equal(siguienteEstado("cerrada"), "cerrada");
+});
+
+test("avanzarEstado cambia solo la incidencia indicada", () => {
+  const nueva = avanzarEstado(muestra, 1);
+  assert.equal(nueva[0].estado, "en_progreso");
+  assert.equal(nueva[1].estado, "en_progreso");
+  assert.equal(muestra[0].estado, "abierta");
+});

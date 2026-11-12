@@ -56,3 +56,25 @@ export function siguienteId(lista) {
 export function ordenarPorFecha(lista) {
   return [...lista].sort((a, b) => b.fecha.localeCompare(a.fecha));
 }
+
+/**
+ * Filtra las incidencias por estado.
+ * Si no se indica estado se devuelven todas.
+ */
+export function filtrarPorEstado(lista, estado) {
+  if (!estado) return lista;
+  return lista.filter((inc) => inc.estado === estado);
+}
+
+/** Devuelve el estado que sigue en el ciclo abierta → en progreso → cerrada. */
+export function siguienteEstado(estado) {
+  const i = ESTADOS.indexOf(estado);
+  return i === -1 || i === ESTADOS.length - 1 ? estado : ESTADOS[i + 1];
+}
+
+/** Devuelve una copia de la lista con la incidencia `id` en su siguiente estado. */
+export function avanzarEstado(lista, id) {
+  return lista.map((inc) =>
+    inc.id === id ? { ...inc, estado: siguienteEstado(inc.estado) } : inc,
+  );
+}
